@@ -31,23 +31,31 @@ function StudentDetail({ student }: StudentDetailsProps) {
   useEffect(() => {}, [student]);
   useEffect(() => {
     const derivedData: any = [];
-    const chartData: any = [];
+    const hrChartData: any = [];
+    const spChartData: any = [];
     student.biometric_readings.map((reading: any) => {
       derivedData.push({
-        ts: reading.heart_rate.ts,
-        systolic_pressure: reading.systolic_blood_pressure.payload.bp_sys,
-        heart_rate: reading.heart_rate.payload.hr,
+        ts: reading.ts,
+        systolic_pressure: reading.sp,
+        heart_rate: reading.hr,
         fraud_status: false,
       });
-      chartData.push({
-        x: Number.parseInt(reading.heart_rate.ts),
-        y: Number.parseInt(reading.heart_rate.payload.hr),
+      hrChartData.push({
+        x: Number.parseInt(reading.ts),
+        y: Number.parseInt(reading.hr),
+      });
+      spChartData.push({
+        x: Number.parseInt(reading.ts),
+        y: Number.parseInt(reading.sp),
       });
     });
     setDerivedData(derivedData);
     setChartOptions({
       ...chartOptions,
-      series: [{ name: "Heart rate", data: chartData }],
+      series: [
+        { name: "Heart rate", data: hrChartData },
+        { name: "Systolic Blood Pressure", data: spChartData },
+      ],
     });
   }, [student]);
 
