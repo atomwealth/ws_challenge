@@ -1,0 +1,104 @@
+{
+  "students": [
+    {
+      "name": "jon",
+      "lastname": "snow",
+      "nif": "43434343XD",
+      "base_hr": 90,
+      "base_systolic_pressure": 120,
+      "heart_readings": [
+        {
+          "eui": "",
+          "model": "",
+          "version": "",
+          "payload": {
+            "hr": 95,
+            "hrt": 1200
+          },
+          "ts": 1732376970000
+        },
+        {
+          "eui": "",
+          "model": "",
+          "version": "",
+          "payload": {
+            "hr": 100,
+            "hrt": 1200
+          },
+          "ts": 1732377000000
+        },
+        {
+          "eui": "",
+          "model": "",
+          "version": "",
+          "payload": {
+            "hr": 110,
+            "hrt": 1200
+          },
+          "ts": 1732377030000
+        },
+        {
+          "eui": "",
+          "model": "",
+          "version": "",
+          "payload": {
+            "hr": 120,
+            "hrt": 1200
+          },
+          "ts": 1732377060000
+        },
+        {
+          "eui": "",
+          "model": "",
+          "version": "",
+          "payload": {
+            "hr": 130,
+            "hrt": 1200
+          },
+          "ts": 1732377090000
+        },
+        {
+          "eui": "",
+          "model": "",
+          "version": "",
+          "payload": {
+            "hr": 120,
+            "hrt": 1200
+          },
+          "ts": 1732377120000
+        },
+        {
+          "eui": "",
+          "model": "",
+          "version": "",
+          "payload": {
+            "hr": 125,
+            "hrt": 1200
+          },
+          "ts": 1732377150000
+        },
+        {
+          "eui": "",
+          "model": "",
+          "version": "",
+          "payload": {
+            "hr": 100,
+            "hrt": 1200
+          },
+          "ts": 1732377180000
+        },
+        {
+          "eui": "",
+          "model": "",
+          "version": "",
+          "payload": {
+            "hr": 100,
+            "hrt": 1200
+          },
+          "ts": 1732377210000
+        }
+      ],
+      "blood_pressure_readings": []
+    }
+  ]
+}
