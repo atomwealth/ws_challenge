@@ -16,10 +16,10 @@ export async function fetchStudents() {
   return results;
 }
 
-function detectDevices(readings: BiometricReading) {
+export function detectDevices(readings: BiometricReading) {
   const bpDevice = "Samsung BPA";
   const hrDevice =
-    "payload" in readings.heart_rate ? "Samsung X1-S" : "Polas MX2";
+    "payload" in readings.heart_rate ? "Samsung X1-S" : "Polar MX2";
   return { bpDevice, hrDevice };
 }
 
