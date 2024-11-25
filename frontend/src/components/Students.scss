@@ -5,14 +5,14 @@
     @apply bg-blue-400 text-white;
 
     & td {
-      @apply px-6 py-2 text-gray-900;
+      @apply px-6 py-1 text-gray-900;
     }
   }
   & tbody > tr {
     @apply border-b border-gray-300 hover:cursor-pointer hover:bg-blue-200 hover:text-white;
 
     & td {
-      @apply px-6 py-2 text-gray-900;
+      @apply px-6 py-1 text-gray-900;
     }
   }
 }
