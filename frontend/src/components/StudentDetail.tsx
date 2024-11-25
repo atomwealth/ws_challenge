@@ -50,6 +50,12 @@ function StudentDetail({ student }: StudentDetailsProps) {
   const [derivedData, setDerivedData] = useState<DerivedData[]>([]);
 
   useEffect(() => {
+    Highcharts.setOptions({
+      global: {
+        timezoneOffset: -60, // Fix the timezone difference
+      },
+    });
+
     const derivedData: DerivedData[] = [];
     const hrChartData: ChartData[] = [];
     const spChartData: ChartData[] = [];
