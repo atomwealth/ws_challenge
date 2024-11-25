@@ -8,6 +8,7 @@ import {
 } from "./interfaces";
 
 var db = new JsonDB(new Config("data/db", true, true, "/"));
+var evidenceDb = new JsonDB(new Config("data/evidence", true, true, "/"));
 
 export async function fetchStudents() {
   var data = await db.getData("/students");
@@ -106,5 +107,8 @@ export function detectFraud(student: Student) {
       fraud_starting_at,
     },
   };
+  if (fraud) {
+    evidenceDb.push("/fraud[]", { detected_at: new Date(), result });
+  }
   return result;
 }

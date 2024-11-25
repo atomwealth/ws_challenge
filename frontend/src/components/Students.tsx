@@ -80,7 +80,10 @@ function Students() {
             {selectedStudent ? (
               <StudentDetail student={selectedStudent} />
             ) : (
-              <>{loading ? <div>Loading</div> : <div>{error}</div>}</>
+              <>
+                {loading && <div>Loading</div>}
+                {error && <div>Error fetching the students</div>}
+              </>
             )}
           </div>
         </div>

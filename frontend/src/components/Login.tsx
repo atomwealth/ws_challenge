@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { removeToken, setToken } from "../common/jwt";
+import { useEffect, useState } from "react";
+import { getToken, removeToken, setToken } from "../common/jwt";
 import axios, { AxiosError } from "axios";
 
 interface FormData {
@@ -17,6 +17,11 @@ function Login({ onLogChange }: LoginProps) {
   });
   const [error, setError] = useState();
   const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const authToken = getToken();
+    setLoggedIn(authToken !== null);
+  }, []);
 
   function handleNameChange(
     field: string,
