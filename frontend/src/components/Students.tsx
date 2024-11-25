@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import StudentDetail from "./StudentDetail";
 import { StudentResult } from "../interfaces/common";
 import "./Students.scss";
+import { getToken } from "../common/jwt";
 
 function Students() {
   const [students, setStudents] = useState<StudentResult[]>([]);
@@ -28,19 +29,9 @@ function Students() {
         setLoading(false);
       }
     };
+    const token = getToken();
+    getStudents(token);
     // Auto login and get the jwt token for the next call
-    const login = async () => {
-      try {
-        const { data } = await axios.post("http://localhost:3000/login", {
-          username: "demo",
-          password: "demo",
-        });
-        getStudents(data.token);
-      } catch (err: any) {
-        setError(err);
-      }
-    };
-    login();
   }, []);
 
   function viewDetail(student: StudentResult) {

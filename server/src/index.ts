@@ -23,6 +23,7 @@ app.post("/login", (req, res) => {
     const token = jwt.sign({ username: username }, "WORLDSENSING CHALLENGE");
     res.json({ token });
   } else {
+    console.log("Bad credentials");
     res.status(401).json({ message: "Invalid credentials" });
   }
 });
