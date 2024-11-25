@@ -4,6 +4,7 @@ import {
   SamsungHeartBiometricReading,
   PolarHeartBiometricReading,
   FraudResult,
+  BiometricReading,
 } from "./interfaces";
 
 var db = new JsonDB(new Config("data/db", true, true, "/"));
@@ -15,6 +16,13 @@ export async function fetchStudents() {
   return results;
 }
 
+function detectDevices(readings: BiometricReading) {
+  const bpDevice = "Samsung BPA";
+  const hrDevice =
+    "payload" in readings.heart_rate ? "Samsung X1-S" : "Polas MX2";
+  return { bpDevice, hrDevice };
+}
+
 function detectFraud(student: Student) {
   console.log("Fraud detection for " + student.name + " " + student.lastname);
   const hr_readings = student.biometric_readings;
@@ -24,6 +32,7 @@ function detectFraud(student: Student) {
   const normalizedReadings = [];
   const base_sp = student.base_systolic_pressure;
   const limit_sp = +base_sp * 1.2;
+  const { bpDevice, hrDevice } = detectDevices(student.biometric_readings[0]);
   /*console.log(
     `${student.name} ${student.lastname}, HR base=${base_hr}, HR limit =${limit_hr}, ${hr_readings.length}`
   );*/
@@ -79,14 +88,15 @@ function detectFraud(student: Student) {
         fraud
     );
   }
+
   const result: FraudResult = {
     name: student.name,
     lastname: student.lastname,
     nif: student.nif,
     base_hr,
     base_sp,
-    hr_device: "",
-    sp_device: "",
+    hr_device: hrDevice,
+    sp_device: bpDevice,
     biometric_readings: normalizedReadings,
     fraud_results: {
       possible_fraud: fraud,

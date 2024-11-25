@@ -137,7 +137,9 @@ function StudentDetail({ student }: StudentDetailsProps) {
                 {student.name} {student.lastname} ({student.nif})
               </td>
               <td className="field_label">Device info</td>
-              <td>Polar XDRRR</td>
+              <td>
+                HR:{student.hr_device} / BP:{student.sp_device}
+              </td>
             </tr>
             <tr>
               <td className="field_label">Base HR</td>
