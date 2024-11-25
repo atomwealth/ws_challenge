@@ -129,6 +129,7 @@ function StudentDetail({ student }: StudentDetailsProps) {
             ))}
           </tbody>
         </table>
+
         <table className="student_detail_table">
           <tbody>
             <tr>
@@ -136,6 +137,8 @@ function StudentDetail({ student }: StudentDetailsProps) {
               <td>
                 {student.name} {student.lastname} ({student.nif})
               </td>
+            </tr>
+            <tr>
               <td className="field_label">Device info</td>
               <td>
                 HR:{student.hr_device} / BP:{student.sp_device}
@@ -144,12 +147,16 @@ function StudentDetail({ student }: StudentDetailsProps) {
             <tr>
               <td className="field_label">Base HR</td>
               <td>{student.base_hr} bpm</td>
+            </tr>
+            <tr>
               <td className="field_label">Base SBP</td>
               <td>{student.base_sp}mm Hg</td>
             </tr>
             <tr>
               <td className="field_label">Treshold HR (+30%)</td>
               <td>{student.base_hr * 1.3} bpm</td>
+            </tr>
+            <tr>
               <td className="field_label">Treshold SBP (+20)</td>
               <td>{student.base_sp * 1.2}mm Hg</td>
             </tr>

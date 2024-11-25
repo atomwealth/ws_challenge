@@ -35,7 +35,7 @@ function Students() {
     <>
       <div className="flex flex-col text-center ">
         <div className="font-bold text-xl uppercase border border-gray-300 bg-blue-400 text-white p-1">
-          List of Students
+          Fraud detection screener
         </div>
 
         <div className="flex flex-row justify-between items-start p-2">
