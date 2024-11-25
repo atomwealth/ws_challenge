@@ -11,8 +11,7 @@ var db = new JsonDB(new Config("data/db", true, true, "/"));
 
 export async function fetchStudents() {
   var data = await db.getData("/students");
-  const results = [detectFraud(data[0]), detectFraud(data[1])];
-
+  const results = data.map((student: Student) => detectFraud(student));
   return results;
 }
 
@@ -24,7 +23,6 @@ export function detectDevices(readings: BiometricReading) {
 }
 
 export function detectFraud(student: Student) {
-  console.log("Fraud detection for " + student.name + " " + student.lastname);
   const hr_readings = student.biometric_readings;
   const base_hr = student.base_hr;
   const limit_hr = +base_hr * 1.3;
@@ -67,26 +65,31 @@ export function detectFraud(student: Student) {
     });
 
     fraud = spStrike > 3 && hrStrike > 4;
-    if (fraud) fraud_starting_at = currentReading.systolic_blood_pressure.ts;
-
-    console.log(
-      "TS:" +
-        currentReading.systolic_blood_pressure.ts +
-        "SP:" +
-        pressureReading +
-        " " +
-        limit_sp +
-        "SP STRIKES=" +
-        spStrike +
-        ", HR:" +
-        hearRateReading +
-        " " +
-        limit_hr +
-        "HR STRIKES=" +
-        hrStrike +
-        ", FRAUD " +
-        fraud
-    );
+    if (fraud) {
+      fraud_starting_at = currentReading.systolic_blood_pressure.ts;
+      console.log(
+        "Fraud detected for " + student.name + " " + student.lastname
+      );
+      // TODO store evidence somewhere
+      console.log(
+        "TS:" +
+          currentReading.systolic_blood_pressure.ts +
+          "SP:" +
+          pressureReading +
+          " " +
+          limit_sp +
+          "SP STRIKES=" +
+          spStrike +
+          ", HR:" +
+          hearRateReading +
+          " " +
+          limit_hr +
+          "HR STRIKES=" +
+          hrStrike +
+          ", FRAUD " +
+          fraud
+      );
+    }
   }
 
   const result: FraudResult = {

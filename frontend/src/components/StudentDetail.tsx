@@ -84,7 +84,7 @@ function StudentDetail({ student }: StudentDetailsProps) {
 
   return (
     <>
-      <div className="mt-4">
+      <div className="mt-3">
         <HighchartsReact highcharts={Highcharts} options={chartOptions} />
       </div>
       <div className="flex items-start">

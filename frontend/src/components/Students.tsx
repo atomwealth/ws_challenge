@@ -14,7 +14,7 @@ function Students() {
   );
 
   useEffect(() => {
-    const getStudents = async (jwt) => {
+    const getStudents = async (jwt: string) => {
       try {
         setLoading(true);
         const { data } = await axios.get("http://localhost:3000/students", {
@@ -30,8 +30,7 @@ function Students() {
       }
     };
     const token = getToken();
-    getStudents(token);
-    // Auto login and get the jwt token for the next call
+    if (token) getStudents(token);
   }, []);
 
   function viewDetail(student: StudentResult) {
@@ -48,7 +47,7 @@ function Students() {
           Fraud detection screener
         </div>
 
-        <div className="flex flex-row justify-between items-start p-2">
+        <div className="flex flex-row justify-between items-start px-2 ">
           {students.length > 0 && (
             <table className="student_list flex-grow-0 flex-shrink-0">
               <thead>

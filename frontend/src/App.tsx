@@ -11,14 +11,14 @@ function App() {
     setLoggedIn(authToken !== null);
   }, []);
 
-  function handleLoggedIn() {
+  function handleLoggedChange() {
     const authToken = getToken();
     setLoggedIn(authToken !== null);
   }
 
   return (
     <>
-      <Login onLogged={handleLoggedIn} />
+      <Login onLogChange={handleLoggedChange} />
       {loggedIn && <Students />}
     </>
   );
