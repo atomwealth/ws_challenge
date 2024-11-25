@@ -13,10 +13,14 @@ function Students() {
   );
 
   useEffect(() => {
-    const getStudents = async () => {
+    const getStudents = async (jwt) => {
       try {
         setLoading(true);
-        const { data } = await axios.get("http://localhost:3000/students");
+        const { data } = await axios.get("http://localhost:3000/students", {
+          headers: {
+            Authorization: `Bearer ${jwt}`,
+          },
+        });
         setStudents(data);
       } catch (err: any) {
         setError(err);
@@ -24,7 +28,19 @@ function Students() {
         setLoading(false);
       }
     };
-    getStudents();
+    // Auto login and get the jwt token for the next call
+    const login = async () => {
+      try {
+        const { data } = await axios.post("http://localhost:3000/login", {
+          username: "demo",
+          password: "demo",
+        });
+        getStudents(data.token);
+      } catch (err: any) {
+        setError(err);
+      }
+    };
+    login();
   }, []);
 
   function viewDetail(student: StudentResult) {
@@ -34,7 +50,10 @@ function Students() {
   return (
     <>
       <div className="flex flex-col text-center ">
-        <div className="font-bold text-xl uppercase border border-gray-300 bg-blue-400 text-white p-1">
+        <div
+          className="font-bold text-xl uppercase border border-gray-300 bg-blue-400 text-white p-1"
+          data-test-id="student_list_title"
+        >
           Fraud detection screener
         </div>
 
