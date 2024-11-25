@@ -1,6 +1,12 @@
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import { useEffect, useState } from "react";
+import {
+  ChartData,
+  DerivedData,
+  SimplifiedBiometricReading,
+  StudentResult,
+} from "../interfaces/common";
 
 const CHART_CONFIG = {
   chart: {
@@ -21,19 +27,19 @@ const CHART_CONFIG = {
 };
 
 interface StudentDetailsProps {
-  student: any;
+  student: StudentResult;
 }
 
 function StudentDetail({ student }: StudentDetailsProps) {
   const [chartOptions, setChartOptions] = useState(CHART_CONFIG);
-  const [derivedData, setDerivedData] = useState([]);
+  const [derivedData, setDerivedData] = useState<DerivedData[]>([]);
 
   useEffect(() => {}, [student]);
   useEffect(() => {
-    const derivedData: any = [];
-    const hrChartData: any = [];
-    const spChartData: any = [];
-    student.biometric_readings.map((reading: any) => {
+    const derivedData: DerivedData[] = [];
+    const hrChartData: ChartData[] = [];
+    const spChartData: ChartData[] = [];
+    student.biometric_readings.map((reading: SimplifiedBiometricReading) => {
       derivedData.push({
         ts: reading.ts,
         systolic_pressure: reading.sp,
@@ -41,12 +47,12 @@ function StudentDetail({ student }: StudentDetailsProps) {
         fraud_status: false,
       });
       hrChartData.push({
-        x: Number.parseInt(reading.ts),
-        y: Number.parseInt(reading.hr),
+        x: reading.ts,
+        y: reading.hr,
       });
       spChartData.push({
-        x: Number.parseInt(reading.ts),
-        y: Number.parseInt(reading.sp),
+        x: reading.ts,
+        y: reading.sp,
       });
     });
     setDerivedData(derivedData);
@@ -64,9 +70,9 @@ function StudentDetail({ student }: StudentDetailsProps) {
       <div className="mt-4">
         <HighchartsReact highcharts={Highcharts} options={chartOptions} />
       </div>
-      <table className="table-auto bg-white border border-gray-300 rounded-lg mt-4">
+      <table className="table-auto bg-white border border-blue-200 rounded-lg mt-4">
         <thead>
-          <tr className="bg-gray-400 text-white">
+          <tr className="bg-blue-400 text-white">
             <th className="px-6 py-2 text-md uppercase">Timestamp</th>
             <th className="px-6 py-2 text-md uppercase">SYS blood pressure</th>
             <th className="px-6 py-2 text-md uppercase">Heart rate</th>
@@ -74,8 +80,8 @@ function StudentDetail({ student }: StudentDetailsProps) {
           </tr>
         </thead>
         <tbody>
-          {derivedData.map((reading: any) => (
-            <tr key={reading.ts}>
+          {derivedData.map((reading: DerivedData) => (
+            <tr key={reading.ts} className="border-b">
               <td className="px-6 py-2 text-sm">{reading.ts}</td>
               <td className="px-6 py-2 text-sm">
                 {reading.systolic_pressure}mm Hg
