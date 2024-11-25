@@ -23,7 +23,7 @@ export function detectDevices(readings: BiometricReading) {
   return { bpDevice, hrDevice };
 }
 
-function detectFraud(student: Student) {
+export function detectFraud(student: Student) {
   console.log("Fraud detection for " + student.name + " " + student.lastname);
   const hr_readings = student.biometric_readings;
   const base_hr = student.base_hr;
