@@ -7,6 +7,7 @@ import {
   SimplifiedBiometricReading,
   StudentResult,
 } from "../interfaces/common";
+import "./StudentDetail.scss";
 
 const CHART_CONFIG = {
   chart: {
@@ -26,6 +27,20 @@ const CHART_CONFIG = {
   ],
 };
 
+function formatDate(ts: number) {
+  const date = new Date(ts);
+  const formatted = date.toLocaleDateString("es-ES", {
+    // you can use undefined as first argument
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  });
+  return formatted;
+}
+
 interface StudentDetailsProps {
   student: StudentResult;
 }
@@ -34,7 +49,6 @@ function StudentDetail({ student }: StudentDetailsProps) {
   const [chartOptions, setChartOptions] = useState(CHART_CONFIG);
   const [derivedData, setDerivedData] = useState<DerivedData[]>([]);
 
-  useEffect(() => {}, [student]);
   useEffect(() => {
     const derivedData: DerivedData[] = [];
     const hrChartData: ChartData[] = [];
@@ -42,8 +56,11 @@ function StudentDetail({ student }: StudentDetailsProps) {
     student.biometric_readings.map((reading: SimplifiedBiometricReading) => {
       derivedData.push({
         ts: reading.ts,
+        formated_date: formatDate(reading.ts),
         systolic_pressure: reading.sp,
         heart_rate: reading.hr,
+        sp_limit_exceeded: reading.sp >= student.base_sp * 1.2,
+        hr_limit_exceeded: reading.hr >= student.base_hr * 1.3,
         fraud_status: false,
       });
       hrChartData.push({
@@ -70,28 +87,73 @@ function StudentDetail({ student }: StudentDetailsProps) {
       <div className="mt-4">
         <HighchartsReact highcharts={Highcharts} options={chartOptions} />
       </div>
-      <table className="table-auto bg-white border border-blue-200 rounded-lg mt-4">
-        <thead>
-          <tr className="bg-blue-400 text-white">
-            <th className="px-6 py-2 text-md uppercase">Timestamp</th>
-            <th className="px-6 py-2 text-md uppercase">SYS blood pressure</th>
-            <th className="px-6 py-2 text-md uppercase">Heart rate</th>
-            <th className="px-6 py-2  text-md uppercase">Fraud status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {derivedData.map((reading: DerivedData) => (
-            <tr key={reading.ts} className="border-b">
-              <td className="px-6 py-2 text-sm">{reading.ts}</td>
-              <td className="px-6 py-2 text-sm">
-                {reading.systolic_pressure}mm Hg
-              </td>
-              <td className="px-6 py-2 text-sm ">{reading.heart_rate} bpm</td>
-              <td className="px-6 py-2 text-sm ">{reading.fraud_status}</td>
+      <div className="flex items-start">
+        <table className="student_detail_table">
+          <thead>
+            <tr className="field_label">
+              <th className="uppercase">Timestamp</th>
+              <th className="uppercase">SYS blood pressure</th>
+              <th className="uppercase">Heart rate</th>
+              <th className="uppercase">Fraud status</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {derivedData.map((reading: DerivedData) => (
+              <tr
+                key={reading.ts}
+                className={`${
+                  student.fraud_results.possible_fraud &&
+                  reading.ts >= student.fraud_results.fraud_starting_at
+                    ? "bg-red-200"
+                    : ""
+                }`}
+              >
+                <td>{reading.formated_date}</td>
+                <td
+                  className={`${reading.sp_limit_exceeded ? "bg-red-200" : ""}`}
+                >
+                  {reading.systolic_pressure}mm Hg
+                </td>
+                <td
+                  className={`${reading.hr_limit_exceeded ? "bg-red-200" : ""}`}
+                >
+                  {reading.heart_rate} bpm
+                </td>
+                <td className="">
+                  {student.fraud_results.possible_fraud &&
+                  reading.ts >= student.fraud_results.fraud_starting_at ? (
+                    <div>POSSIBLE FRAUD</div>
+                  ) : null}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <table className="student_detail_table">
+          <tbody>
+            <tr>
+              <td className="field_label">Student info</td>
+              <td>
+                {student.name} {student.lastname} ({student.nif})
+              </td>
+              <td className="field_label">Device info</td>
+              <td>Polar XDRRR</td>
+            </tr>
+            <tr>
+              <td className="field_label">Base HR</td>
+              <td>{student.base_hr} bpm</td>
+              <td className="field_label">Base SBP</td>
+              <td>{student.base_sp}mm Hg</td>
+            </tr>
+            <tr>
+              <td className="field_label">Treshold HR (+30%)</td>
+              <td>{student.base_hr * 1.3} bpm</td>
+              <td className="field_label">Treshold SBP (+20)</td>
+              <td>{student.base_sp * 1.2}mm Hg</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </>
   );
 }

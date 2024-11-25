@@ -1,0 +1,15 @@
+.student_detail_table {
+  @apply table-auto bg-white border-blue-100 rounded-lg mt-4 border-2;
+
+  & tr {
+    @apply border-b;
+
+    & td,
+    & th {
+      @apply px-6 py-2 text-sm;
+    }
+  }
+  & .field_label {
+    @apply bg-blue-400 text-white;
+  }
+}

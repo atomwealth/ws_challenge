@@ -10,13 +10,13 @@ var db = new JsonDB(new Config("data/db", true, true, "/"));
 
 export async function fetchStudents() {
   var data = await db.getData("/students");
-
   const results = [detectFraud(data[0]), detectFraud(data[1])];
 
   return results;
 }
 
 function detectFraud(student: Student) {
+  console.log("Fraud detection for " + student.name + " " + student.lastname);
   const hr_readings = student.biometric_readings;
   const base_hr = student.base_hr;
   const limit_hr = +base_hr * 1.3;
@@ -61,13 +61,15 @@ function detectFraud(student: Student) {
     if (fraud) fraud_starting_at = currentReading.systolic_blood_pressure.ts;
 
     console.log(
-      "SP" +
+      "TS:" +
+        currentReading.systolic_blood_pressure.ts +
+        "SP:" +
         pressureReading +
         " " +
         limit_sp +
         "SP STRIKES=" +
         spStrike +
-        ", HR" +
+        ", HR:" +
         hearRateReading +
         " " +
         limit_hr +

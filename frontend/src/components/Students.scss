@@ -1,0 +1,18 @@
+.student_list {
+  @apply table-auto bg-white border border-gray-300 rounded-lg mt-4 flex-grow-0;
+
+  & thead > tr {
+    @apply bg-blue-400 text-white;
+
+    & td {
+      @apply px-6 py-2 text-gray-900;
+    }
+  }
+  & tbody > tr {
+    @apply border-b border-gray-300 hover:cursor-pointer hover:bg-blue-200 hover:text-white;
+
+    & td {
+      @apply px-6 py-2 text-gray-900;
+    }
+  }
+}

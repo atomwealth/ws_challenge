@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import StudentDetail from "./StudentDetail";
 import { StudentResult } from "../interfaces/common";
+import "./Students.scss";
 
 function Students() {
   const [students, setStudents] = useState<StudentResult[]>([]);
@@ -32,44 +33,46 @@ function Students() {
 
   return (
     <>
-      <div className="flex flex-col text-center">
+      <div className="flex flex-col text-center ">
         <div className="font-bold text-xl uppercase border border-gray-300 bg-blue-400 text-white p-1">
           List of Students
         </div>
 
-        <div className="flex flex-row justify-around items-start">
-          <table className="table-auto bg-white border border-gray-300 rounded-lg mt-4 flex-grow-0">
-            <thead>
-              <tr className="bg-blue-400 text-white">
-                <th className="px-6 py-2 font-medium uppercase">Name</th>
-                <th className="px-6 py-2 font-medium uppercase">Last Name</th>
-                <th className="px-6 py-2 font-medium uppercase">NIF</th>
-                <th className="px-6 py-2 font-medium uppercase">
-                  Fraud status
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {students.map((student) => (
-                <tr
-                  key={student.nif}
-                  className="border-b border-gray-300 hover:cursor-pointer hover:bg-blue-200 hover:text-white"
-                  onClick={() => viewDetail(student)}
-                >
-                  <td className="px-6 py-2 text-gray-900">{student.name}</td>
-                  <td className="px-6 py-2 text-gray-900">
-                    {student.lastname}
-                  </td>
-                  <td className="px-6 py-2 text-gray-900">{student.nif}</td>
-                  <td className="px-6 py-2 text-gray-900">
-                    {student.fraud_results.possible_fraud}
-                  </td>
+        <div className="flex flex-row justify-between items-start p-2">
+          {students.length > 0 && (
+            <table className="student_list flex-grow-0 flex-shrink-0">
+              <thead>
+                <tr>
+                  <th className="px-6 py-2 font-medium uppercase">Name</th>
+                  <th className="px-6 py-2 font-medium uppercase">Last Name</th>
+                  <th className="px-6 py-2 font-medium uppercase">NIF</th>
+                  <th className="px-6 py-2 font-medium uppercase">
+                    Fraud status
+                  </th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-          <div>
-            {selectedStudent && <StudentDetail student={selectedStudent} />}
+              </thead>
+              <tbody>
+                {students.map((student) => (
+                  <tr key={student.nif} onClick={() => viewDetail(student)}>
+                    <td>{student.name}</td>
+                    <td>{student.lastname}</td>
+                    <td>{student.nif}</td>
+                    <td>
+                      {student.fraud_results.possible_fraud
+                        ? "POSSIBLE FRAUD"
+                        : "NO FRAUD DETECTED"}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+          <div className="flex-1 ml-2">
+            {selectedStudent ? (
+              <StudentDetail student={selectedStudent} />
+            ) : (
+              <>{loading ? <div>Loading</div> : <div>{error}</div>}</>
+            )}
           </div>
         </div>
       </div>

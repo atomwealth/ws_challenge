@@ -21,8 +21,11 @@ export interface SimplifiedBiometricReading {
 
 export interface DerivedData {
   ts: number;
+  formated_date: string;
   systolic_pressure: number;
   heart_rate: number;
+  sp_limit_exceeded: boolean;
+  hr_limit_exceeded: boolean;
   fraud_status: boolean;
 }
 
