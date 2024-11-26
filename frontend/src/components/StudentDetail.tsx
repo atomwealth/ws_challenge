@@ -90,11 +90,11 @@ function StudentDetail({ student }: StudentDetailsProps) {
 
   return (
     <>
-      <div className="mt-3">
+      <div className="mt-3" data-testId="student_chart">
         <HighchartsReact highcharts={Highcharts} options={chartOptions} />
       </div>
       <div className="flex items-start">
-        <table className="student_detail_table">
+        <table className="student_detail_table" data-testId="student_detail">
           <thead>
             <tr className="field_label">
               <th className="uppercase">Timestamp</th>
