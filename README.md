@@ -1,6 +1,4 @@
-# Worldsensing Challenge - Web client
-
-## Introduction
+# Worldsensing Challenge
 
 ## Assumptions
 
