@@ -118,12 +118,12 @@ function StudentDetail({ student }: StudentDetailsProps) {
                 <td
                   className={`${reading.sp_limit_exceeded ? "bg-red-200" : ""}`}
                 >
-                  {reading.systolic_pressure}mm Hg
+                  {Math.floor(reading.systolic_pressure)}mm Hg
                 </td>
                 <td
                   className={`${reading.hr_limit_exceeded ? "bg-red-200" : ""}`}
                 >
-                  {reading.heart_rate} bpm
+                  {Math.floor(reading.heart_rate)} bpm
                 </td>
                 <td className="">
                   {student.fraud_results.possible_fraud &&
@@ -152,19 +152,19 @@ function StudentDetail({ student }: StudentDetailsProps) {
             </tr>
             <tr>
               <td className="field_label">Base HR</td>
-              <td>{student.base_hr} bpm</td>
+              <td>{Math.floor(student.base_hr)} bpm</td>
             </tr>
             <tr>
               <td className="field_label">Base SBP</td>
-              <td>{student.base_sp}mm Hg</td>
+              <td>{Math.floor(student.base_sp)}mm Hg</td>
             </tr>
             <tr>
               <td className="field_label">Treshold HR (+30%)</td>
-              <td>{student.base_hr * 1.3} bpm</td>
+              <td>{Math.floor(student.base_hr * 1.3)} bpm</td>
             </tr>
             <tr>
               <td className="field_label">Treshold SBP (+20)</td>
-              <td>{student.base_sp * 1.2}mm Hg</td>
+              <td>{Math.floor(student.base_sp * 1.2)}mm Hg</td>
             </tr>
           </tbody>
         </table>

@@ -413,6 +413,384 @@
           }
         }
       ]
+    },
+    {
+      "name": "Nami",
+      "lastname": "OnePiece",
+      "nif": "66565437D",
+      "base_hr": 70,
+      "base_systolic_pressure": 110,
+      "biometric_readings": [
+        {
+          "heart_rate": {
+            "eui": "",
+            "model": "",
+            "version": "",
+            "payload": {
+              "hr": 95,
+              "hrt": 1200
+            },
+            "ts": 1732376970000
+          },
+          "systolic_blood_pressure": {
+            "eui": "",
+            "model": "",
+            "version": "",
+            "payload": {
+              "bp_sys": 150,
+              "bp_dia": 123
+            },
+            "ts": 1732376970000
+          }
+        },
+        {
+          "heart_rate": {
+            "eui": "",
+            "model": "",
+            "version": "",
+            "payload": {
+              "hr": 100,
+              "hrt": 1200
+            },
+            "ts": 1732377000000
+          },
+          "systolic_blood_pressure": {
+            "eui": "",
+            "model": "",
+            "version": "",
+            "payload": {
+              "bp_sys": 125,
+              "bp_dia": 123
+            },
+            "ts": 1732377000000
+          }
+        },
+        {
+          "heart_rate": {
+            "eui": "",
+            "model": "",
+            "version": "",
+            "payload": {
+              "hr": 110,
+              "hrt": 1200
+            },
+            "ts": 1732377030000
+          },
+          "systolic_blood_pressure": {
+            "eui": "",
+            "model": "",
+            "version": "",
+            "payload": {
+              "bp_sys": 130,
+              "bp_dia": 123
+            },
+            "ts": 1732377030000
+          }
+        },
+        {
+          "heart_rate": {
+            "eui": "",
+            "model": "",
+            "version": "",
+            "payload": {
+              "hr": 120,
+              "hrt": 1200
+            },
+            "ts": 1732377060000
+          },
+          "systolic_blood_pressure": {
+            "eui": "",
+            "model": "",
+            "version": "",
+            "payload": {
+              "bp_sys": 150,
+              "bp_dia": 123
+            },
+            "ts": 1732377060000
+          }
+        },
+        {
+          "heart_rate": {
+            "eui": "",
+            "model": "",
+            "version": "",
+            "payload": {
+              "hr": 130,
+              "hrt": 1200
+            },
+            "ts": 1732377090000
+          },
+          "systolic_blood_pressure": {
+            "eui": "",
+            "model": "",
+            "version": "",
+            "payload": {
+              "bp_sys": 150,
+              "bp_dia": 123
+            },
+            "ts": 1732377090000
+          }
+        },
+        {
+          "heart_rate": {
+            "eui": "",
+            "model": "",
+            "version": "",
+            "payload": {
+              "hr": 120,
+              "hrt": 1200
+            },
+            "ts": 1732377120000
+          },
+          "systolic_blood_pressure": {
+            "eui": "",
+            "model": "",
+            "version": "",
+            "payload": {
+              "bp_sys": 148,
+              "bp_dia": 123
+            },
+            "ts": 1732377120000
+          }
+        },
+        {
+          "heart_rate": {
+            "eui": "",
+            "model": "",
+            "version": "",
+            "payload": {
+              "hr": 125,
+              "hrt": 1200
+            },
+            "ts": 1732377150000
+          },
+          "systolic_blood_pressure": {
+            "eui": "",
+            "model": "",
+            "version": "",
+            "payload": {
+              "bp_sys": 150,
+              "bp_dia": 123
+            },
+            "ts": 1732377150000
+          }
+        },
+        {
+          "heart_rate": {
+            "eui": "",
+            "model": "",
+            "version": "",
+            "payload": {
+              "hr": 120,
+              "hrt": 1200
+            },
+            "ts": 1732377180000
+          },
+          "systolic_blood_pressure": {
+            "eui": "",
+            "model": "",
+            "version": "",
+            "payload": {
+              "bp_sys": 150,
+              "bp_dia": 123
+            },
+            "ts": 1732377180000
+          }
+        },
+        {
+          "heart_rate": {
+            "eui": "",
+            "model": "",
+            "version": "",
+            "payload": {
+              "hr": 100,
+              "hrt": 1200
+            },
+            "ts": 1732377210000
+          },
+          "systolic_blood_pressure": {
+            "eui": "",
+            "model": "",
+            "version": "",
+            "payload": {
+              "bp_sys": 155,
+              "bp_dia": 123
+            },
+            "ts": 1732377210000
+          }
+        }
+      ]
+    },
+    {
+      "name": "Iam",
+      "lastname": "Cheater",
+      "nif": "45444455F",
+      "base_hr": 1,
+      "base_systolic_pressure": 110,
+      "biometric_readings": [
+        {
+          "heart_rate": {
+            "eui": "",
+            "fw": "",
+            "pulse": 1.2,
+            "ts": 1732376970000
+          },
+          "systolic_blood_pressure": {
+            "eui": "",
+            "model": "",
+            "version": "",
+            "payload": {
+              "bp_sys": 150,
+              "bp_dia": 123
+            },
+            "ts": 1732376970000
+          }
+        },
+        {
+          "heart_rate": {
+            "eui": "",
+            "fw": "",
+            "pulse": 1.4,
+            "ts": 1732377000000
+          },
+          "systolic_blood_pressure": {
+            "eui": "",
+            "model": "",
+            "version": "",
+            "payload": {
+              "bp_sys": 125,
+              "bp_dia": 123
+            },
+            "ts": 1732377000000
+          }
+        },
+        {
+          "heart_rate": {
+            "eui": "",
+            "fw": "",
+            "pulse": 1.4,
+            "ts": 1732377030000
+          },
+          "systolic_blood_pressure": {
+            "eui": "",
+            "model": "",
+            "version": "",
+            "payload": {
+              "bp_sys": 130,
+              "bp_dia": 123
+            },
+            "ts": 1732377030000
+          }
+        },
+        {
+          "heart_rate": {
+            "eui": "",
+            "fw": "",
+            "pulse": 1.3,
+            "ts": 1732377060000
+          },
+          "systolic_blood_pressure": {
+            "eui": "",
+            "model": "",
+            "version": "",
+            "payload": {
+              "bp_sys": 150,
+              "bp_dia": 123
+            },
+            "ts": 1732377060000
+          }
+        },
+        {
+          "heart_rate": {
+            "eui": "",
+            "fw": "",
+            "pulse": 1.4,
+            "ts": 1732377090000
+          },
+          "systolic_blood_pressure": {
+            "eui": "",
+            "model": "",
+            "version": "",
+            "payload": {
+              "bp_sys": 150,
+              "bp_dia": 123
+            },
+            "ts": 1732377090000
+          }
+        },
+        {
+          "heart_rate": {
+            "eui": "",
+            "fw": "",
+            "pulse": 1.35,
+            "ts": 1732377120000
+          },
+          "systolic_blood_pressure": {
+            "eui": "",
+            "model": "",
+            "version": "",
+            "payload": {
+              "bp_sys": 148,
+              "bp_dia": 123
+            },
+            "ts": 1732377120000
+          }
+        },
+        {
+          "heart_rate": {
+            "eui": "",
+            "fw": "",
+            "pulse": 1.35,
+            "ts": 1732377150000
+          },
+          "systolic_blood_pressure": {
+            "eui": "",
+            "model": "",
+            "version": "",
+            "payload": {
+              "bp_sys": 150,
+              "bp_dia": 123
+            },
+            "ts": 1732377150000
+          }
+        },
+        {
+          "heart_rate": {
+            "eui": "",
+            "fw": "",
+            "pulse": 1.4,
+            "ts": 1732377180000
+          },
+          "systolic_blood_pressure": {
+            "eui": "",
+            "model": "",
+            "version": "",
+            "payload": {
+              "bp_sys": 150,
+              "bp_dia": 123
+            },
+            "ts": 1732377180000
+          }
+        },
+        {
+          "heart_rate": {
+            "eui": "",
+            "fw": "",
+            "pulse": 1.42,
+            "ts": 1732377210000
+          },
+          "systolic_blood_pressure": {
+            "eui": "",
+            "model": "",
+            "version": "",
+            "payload": {
+              "bp_sys": 155,
+              "bp_dia": 123
+            },
+            "ts": 1732377210000
+          }
+        }
+      ]
     }
   ]
 }
