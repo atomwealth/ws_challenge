@@ -49,7 +49,10 @@ function Students() {
 
         <div className="flex flex-row justify-between items-start px-2 ">
           {students.length > 0 && (
-            <table className="student_list flex-grow-0 flex-shrink-0">
+            <table
+              className="student_list flex-grow-0 flex-shrink-0"
+              data-testId="students_list"
+            >
               <thead>
                 <tr>
                   <th className="px-6 py-2 font-medium uppercase">Name</th>

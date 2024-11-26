@@ -64,6 +64,7 @@ function Login({ onLogChange }: LoginProps) {
           <div className="mx-2 p-1">Username</div>
           <input
             type="text"
+            name="username"
             value={formData["username"]}
             className="mx-2 px-2"
             onChange={(event) => handleNameChange("username", event)}
@@ -71,11 +72,13 @@ function Login({ onLogChange }: LoginProps) {
           <div className="mx-2 p-1">Password</div>
           <input
             type="text"
+            name="password"
             value={formData["password"]}
             className="mx-2 px-2"
             onChange={(event) => handleNameChange("password", event)}
           />
           <button
+            name="login"
             onClick={handleLogin}
             className="mx-2 bg-gray-700 p-1 text-white"
           >
@@ -87,6 +90,7 @@ function Login({ onLogChange }: LoginProps) {
       {loggedIn && (
         <div className="flex p-1 justify-end">
           <button
+            name="logout"
             onClick={handleLogout}
             className="mx-2 bg-gray-700 p-1 text-white"
           >
